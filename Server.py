@@ -47,8 +47,7 @@ class Server:
     # takes connection and address variables from serversocket.accept() function in run(self)
     def initialMenu(self, connection, address):
         while True:
-            initialMsg = "Welcome to the Sample Server\n" \
-                         "Choose an option\n" \
+            initialMsg = " ** Welcome to the Sample Server, Choose an option below\n" \
                          "1: receive random a greeting from different languages\n" \
                          "2: sign in\n" \
                          "3: disconnect\n"
