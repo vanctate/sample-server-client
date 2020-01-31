@@ -1,7 +1,6 @@
 from socket import socket, AF_INET, SOCK_STREAM  # sockets to connect to clients
 import threading  # multi-thread the clients
 import random # choosing a random greeting
-# comment added
 
 # simple Server class that accepts multiple clients via localhost 5000
 class Server:
