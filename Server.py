@@ -28,6 +28,7 @@ class Server:
     def run(self):
         # listen for client connections
         while True:
+            print('\nserver up and listening for connections...\n')
             # accept connection from client and add to list of connections
             connection, address = self.__serversocket.accept()
             self.__connections.append(connection)
@@ -49,8 +50,7 @@ class Server:
         while True:
             initialMsg = "** Welcome to the Sample Server, choose an option below **\n" \
                          "1: receive random a greeting from different languages\n" \
-                         "2: sign in\n" \
-                         "3: disconnect\n"
+                         "2: disconnect\n"
  
             connection.send(bytes(initialMsg, 'utf-8')) # send menu message to user       
             data = connection.recv(1024) # receive input from the user on which option
@@ -69,13 +69,8 @@ class Server:
                 # send random greeting back to client back to client
                 connection.send(bytes(randomGreeting, 'utf-8'))
 
-            elif clientOption1 == "2":
-                print("client chose sign in")
-                # break
-                #self.signIn(connection, address)
-
             # remove client from list of connections and close connection
-            elif clientOption1 == "3":
+            elif clientOption1 == "2":
                 connection.send(bytes('you will now be disconnected\n', 'utf-8'))
                 #connection.shutdown(address[0])
                 connection.close()
@@ -95,7 +90,6 @@ class Server:
 
             # this is a catch if there is no more connections of data incoming
             if not data:
-                # self.connections.remove(connection)
                 print(str(address[0]) + ':' +
                       str(address[1]) + " disconnected")
                 connection.close()
